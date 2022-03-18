@@ -1,0 +1,42 @@
+
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PRODUITS</title>
+</head>
+<body>
+<div th:switch="${produits}">
+    <h2 th:case="null">No produits yet!</h2>
+        <div th:case="*">
+            <h2>Produits:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Environment</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="produit : ${produits}">
+                    <td scope="row" ><img alt="" th:src="*{'data:image/jpeg;base64,'+{produit.image}}" style="width: 100px;height: 100px;"></td>
+                    <td th:text="${produit.name}"></td>
+                    <td th:text="${produit.description}"></td>
+                    <td th:text="${produit.price}"></td>
+                    <td th:text="${produit.env}"></td>
+                    <td><a th:href="@{/showUpdate/{produitId}(produitId=${produit.produitId})}">Edit</a></td>
+                    <td><a th:href="@{/deleteProduit/{produitId}(produitId=${produit.produitId})}">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+    <p><a href="/produit/creerProduit">Add a new produit</a></p>
+</div>
+
+</body>
+</html>

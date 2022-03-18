@@ -1,0 +1,45 @@
+<!DOCTYPE html  >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CREER PRODUIT</title>
+<th:block th:insert="~{fragments/myfragments :: link}"></th:block>
+<th:block th:insert="~{fragments/myfragments :: head/script}"></th:block>
+
+</head>
+<body>
+<div class="card">
+	<div class="card-header">
+		<p class="h4 mb-2 text-center">Add Product</p>
+	</div>
+	<div class="card-body">
+<form class="text-center border border-light p-5"  th:action="@{/saveProduitToDB}" th:object="${produit}" method="post" enctype="multipart/form-data">
+<table>
+
+
+<div class="custom-file mb-2">
+				<input type="file" name="file" class="custom-file-input"
+					id="customFile"> <label class="custom-file-label"
+					for="customFile"> Image</label>
+			</div>
+
+<tr><td>NAME: </td> <td> <input type="text" th:field="*{name}" id="name" class="form-control mb-4" placeholder="Name"/></td></tr>
+
+<tr><td>DESCRIPTION: </td> <td><input type="text" th:field="*{description}" id="description" class="form-control mb-4" placeholder="Description"/></td></tr>
+
+<tr><td>PRICE : </td> <td><input type="number" th:field="*{price}" id="price" class="form-control mb-4" placeholder="Price"/></td></tr>
+
+<tr><td>ENVIRONMENT</td> <td><input type="text" th:field="*{env}" id="env" class="form-control mb-4" placeholder="ENVIRONMENT"/></td></tr>
+<tr><td></td> <td><input class="btn btn-info btn-block" type="submit" value="enregistrer"/></td><td><input class="btn btn-info btn-block" type="reset" value="reinitialiser"/></td></tr>
+</table>
+</form>
+${msg}
+
+<a href="index">AFFICHER LES PRODUITS</a>		</form>
+	</div>
+</div>
+
+
+
+</body>
+</html>

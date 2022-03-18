@@ -1,0 +1,35 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>METTRE A JOUR PRODUIT</title>
+</head>
+<body>
+
+<form action="#"  th:action="@{/updateProduit/{produitId}(produitId=${produit.produitId})}" th:object="${produit}" method="post" enctype="multipart/form-data">
+<table>
+
+<tr> <td> image: </td>
+ <td><img alt="" th:src="*{'data:image/jpeg;base64,'+{image}}" style="width: 100px;height: 100px;"></td> 
+  <td> changer image</td> 
+  <td> </td>
+   <td><input type="file" name="file" class="custom-file-input"
+					id="file"> </td> </tr>
+<tr>   <td> </td>  <td> Produit ID: </td> <td></td> <td><input type="text" id="produitId" th:field="*{produitId}" hidden="true"/></td>   </tr>
+   
+<tr>   <td> </td>  <td> NAME:  </td> <td></td> <td><input type="text" id="name" th:field="*{name}"/></td>   </tr>
+
+<tr>   <td> </td>  <td> DESCRIPTION: </td> <td></td> <td><input type="text" id="description" th:field="*{description}"/></td>   </tr>
+  
+<tr>   <td> </td>  <td> PRICE: </td> <td> </td> <td><input type="text" id="price" th:field="*{price}" /></td>   </tr>
+  
+<tr>   <td> </td>  <td> ENVIRONMENT: </td> <td></td> <td><input type="text" id="env" th:field="*{env}"/></td>   </tr>
+ 
+<tr>   <td> </td>  <td> <input type="reset" value="reset"/> </td> <td></td> <td><input type="submit" value="save"/></td>   </tr>
+
+</table>
+</form>
+
+
+</body>
+</html>

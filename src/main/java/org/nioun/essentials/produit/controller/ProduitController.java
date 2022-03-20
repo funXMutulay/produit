@@ -59,9 +59,7 @@ public List<Produit> getAllProduits(){
 	 
 }
 
-@PostMapping(path = "/produits", 
-consumes = MediaType.APPLICATION_JSON_VALUE, 
-produces = MediaType.APPLICATION_JSON_VALUE)
+@PostMapping(path = "/produits")
 
 public ResponseEntity<Produit> create(@RequestBody Produit newProduit) {
 Produit produit = service.saveProduit(newProduit);
